@@ -52,6 +52,7 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store the movie details
 const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':

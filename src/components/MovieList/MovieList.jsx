@@ -6,6 +6,7 @@ function MovieList() {
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
+    const details = useSelector(store => store.details)
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -22,6 +23,8 @@ function MovieList() {
                             <img src={movie.poster} alt={movie.title}/>
                             <br></br>
                             <button> Details </button>
+                            <br></br>
+                            {/* {movie.description} */}
                         </div>
                     );
                 })}
