@@ -29,6 +29,7 @@ function* fetchAllMovies() {
         
 }
 
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -53,7 +54,7 @@ const genres = (state = [], action) => {
 }
 
 // Used to store the movie details
-const details = (state = [], action) => {
+const detailsList = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return [...state, action.payload];
@@ -67,7 +68,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        details,
+        detailsList,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
