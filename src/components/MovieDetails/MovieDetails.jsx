@@ -4,12 +4,12 @@ import {useHistory} from 'react-router-dom';
 
 function MovieDetails () {
 
-    const movies = useSelector(store => store.movies)
+    const dispatch = useDispatch();
     const history = useHistory();
-    const detailsList = useSelector(store => store.detailsList);
+    const movie = useSelector(store => store.details);
 
     const handleDetails = () => {
-        dispatchEvent({type: 'FETCH_DETAILS'})
+        // where fetch genres will go
     }
 
     useEffect (() => {

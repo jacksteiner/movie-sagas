@@ -10,6 +10,12 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
     const details = useSelector(store => store.details)
 
+    const handleDetails = (selectedMovie) => {
+        dispatch({type: 'SET_DETAILS', payload: selectedMovie})
+        history.push('/details')
+    }
+
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -24,7 +30,7 @@ function MovieList() {
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                             <br></br>
-                            <button onClick={() =>history.push('/details')}> Details </button>
+                            <button onClick={()=>handleDetails(movie)}> Details </button>
                             <br></br>
                             {/* {movie.description} */}
                         </div>
