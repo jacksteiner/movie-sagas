@@ -1,29 +1,39 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 
 function MovieDetails () {
 
     const dispatch = useDispatch();
+    const {id} = useParams();
     const history = useHistory();
+    const genres = useSelector(store => store.genre)
     const movie = useSelector(store => store.details);
 
-    const handleDetails = () => {
-        // where fetch genres will go
+    const getGenres = () => {
+        dispatch({ type: 'FETCH_GENRES', payload: id })
     }
 
     useEffect (() => {
-        // fetchGenres();
-    }, [])
+         getGenres();
+    }, [id])
 
     return (
         <>
         <div key={movie.id} >
             <h3>{movie.title}</h3>
             <img src={movie.poster} alt={movie.title}/>
-            <br></br>
+            <br/>
             {movie.description}
-            <br></br>
+            <section className="genres">
+            {genres.map(genre => {
+                return (
+                    <div>
+                        <p>{genre.name}</p>
+                    </div>
+                )
+            })}
+            </section>
             {/* Genres go here */}
         </div>
         </>
