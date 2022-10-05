@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   // Add query to get details
     const query = `SELECT id, description FROM movies`;
     pool.query(query)

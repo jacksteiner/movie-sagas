@@ -8,8 +8,9 @@ function MovieList() {
     const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-    const details = useSelector(store => store.details)
+    // const details = useSelector(store => store.details)
 
+    // if the on click needs to do 2 things, make a function
     const handleDetails = (selectedMovie) => {
         dispatch({type: 'SET_DETAILS', payload: selectedMovie})
         history.push('/details')
@@ -28,9 +29,10 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img onClick={()=>handleDetails(movie)} src={movie.poster} alt={movie.title}/>
                             <br></br>
-                            <button onClick={()=>handleDetails(movie)}> Details </button>
+                            {/* anon function onClick */}
+                            {/* <button > Details </button> */}
                             <br></br>
                             {/* {movie.description} */}
                         </div>

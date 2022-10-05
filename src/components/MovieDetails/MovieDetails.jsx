@@ -13,8 +13,7 @@ function MovieDetails () {
     }
 
     useEffect (() => {
-        console.log('')
-        handleDetails();
+        // fetchGenres();
     }, [])
 
     return (
@@ -24,6 +23,8 @@ function MovieDetails () {
             <img src={movie.poster} alt={movie.title}/>
             <br></br>
             {movie.description}
+            <br></br>
+            {/* Genres go here */}
         </div>
         </>
     )
