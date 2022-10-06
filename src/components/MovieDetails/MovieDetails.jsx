@@ -5,18 +5,18 @@ import {useHistory, useParams} from 'react-router-dom';
 function MovieDetails () {
 
     const dispatch = useDispatch();
-    const {id} = useParams();
+    // const {id} = useParams();
     const history = useHistory();
-    const genres = useSelector(store => store.genre)
+    const genres = useSelector(store => store.genres)
     const movie = useSelector(store => store.details);
 
     const getGenres = () => {
-        dispatch({ type: 'FETCH_GENRES', payload: id })
+        dispatch({ type: 'FETCH_GENRES', payload: movie.id })
     }
 
     useEffect (() => {
          getGenres();
-    }, [id])
+    }, [])
 
     return (
         <>
@@ -26,8 +26,8 @@ function MovieDetails () {
             <br/>
             {movie.description}
             <section className="genres">
-            {genres.map(genre => {
-                return (
+                {genres.map(genre => {
+                    return (
                     <div>
                         <p>{genre.name}</p>
                     </div>

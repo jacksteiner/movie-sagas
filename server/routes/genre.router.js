@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
       res.send(result.rows);
       console.log(result.rows)
     })
-    .catch(err => {
+    .catch(error => {
       console.log('error in get genres', error);
       res.sendStatus(500)
     })
